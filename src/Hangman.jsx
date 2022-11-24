@@ -12,6 +12,17 @@ export default function Hangman({tryCount, win, loseCount, lose}) {
     return "none";
   }
 
+  function calcDisplayClass(count, morethan) {
+    if (count > morethan) {
+      return " show";
+    } 
+    if (win) {
+      return " show";
+    }
+
+    return "";
+  }
+
   function playAgain(){
     window.location.reload();
   }
@@ -26,8 +37,14 @@ export default function Hangman({tryCount, win, loseCount, lose}) {
           transform={win ? "translate(0, 60)" : ""}
         >
           <g id="head">
-            <circle cx="200" cy="80" r="20" strokeWidth="4" fill="black" display={calcDisplay(tryCount, 0)}/>
-            <g id="eyes" transform='translate(0, -4)' display={calcDisplay(tryCount, 1)}>
+            <circle cx="200" cy="80" r="20" strokeWidth="4" 
+              fill="black" 
+              className={'hangmanBody' + calcDisplayClass(tryCount, 0)}
+            />
+            <g id="eyes" 
+              transform='translate(0, -4)' 
+              className={'hangmanBody' + calcDisplayClass(tryCount, 1)}
+            >
               <g id="rEyes" >
                 <circle cx="193" cy="80" r="4"/>
                 <circle cx="207" cy="80" r="4"/>
@@ -44,24 +61,25 @@ export default function Hangman({tryCount, win, loseCount, lose}) {
               display={win ? 'block' : 'none'}
             />
           </g>
-          <line x1="200" y1="100" x2="200" y2="150" 
-            display={calcDisplay(tryCount, 2)}
+
+          <line  x1="200" y1="100" x2="200" y2="150" 
+            className={'hangmanBody' + calcDisplayClass(tryCount, 2)}
           />
           <line id="armL" x1="200" y1="120" x2="170" y2="140" 
-            display={calcDisplay(tryCount, 3)}
+            className={'hangmanBody' + calcDisplayClass(tryCount, 3)}
           />
-          <line id="armR" x1="200" y1="120" x2="230" y2="140" 
-            display={calcDisplay(tryCount, 4)}
+          <line id="armR" x1="200" y1="120" x2="230" y2="140"
+            className={'hangmanBody' + calcDisplayClass(tryCount, 4)} 
           />
           <line id="legL" x1="200" y1="150" x2="180" y2="190" 
-            display={calcDisplay(tryCount, 5)}
+            className={'hangmanBody' + calcDisplayClass(tryCount, 5)}
           />
           <line id="legR" x1="200" y1="150" x2="220" y2="190" 
-            display={calcDisplay(tryCount, 6)}
+            className={'hangmanBody' + calcDisplayClass(tryCount, 6)}
           />
         </g>
-        <line x1="10" y1="250" x2="150" y2="250" />
 
+        <line x1="10" y1="250" x2="150" y2="250" />
         <line id="floor" x1="150" y1="250" x2="250" y2="250" 
           display={win ? 'block' : 'none'}
         />

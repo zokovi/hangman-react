@@ -63,6 +63,16 @@ h1 {
   justify-content: flex-start;
 }
 
+.hangmanBody {
+  opacity: 0%;
+  transition: all 0.3s ease-in-out;
+}
+
+.hangmanBody.show {
+  opacity: 100%;
+}
+
+
 /* .hangman span {
   font-size: 1.5em;
   line-height: 1.1;
@@ -108,6 +118,7 @@ button.key {
   color: aliceblue;
   margin: .25rem;
   padding: .5rem;
+  transition: all .2s ease-in-out;
 }
 
 button.key:hover {
@@ -131,6 +142,7 @@ button.key.correct {
   color: aliceblue;
   margin: .1rem;
   padding: .5rem;
+  transition: all .2s ease-in-out;
 }
 
 
@@ -160,4 +172,8 @@ button.key.correct {
 .winPopup-content img {
   width: 100%;
   object-fit: contain;
+}
+
+g.body {
+  transition: all 0.3s ease-in-out;
 }

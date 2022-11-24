@@ -12,5 +12,7 @@ export default defineConfig({
     watch: {
       usePolling: true,
     }
-  }
+  },
+  base: '/hangman-react/',
+
 })
